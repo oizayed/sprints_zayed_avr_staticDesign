@@ -28,7 +28,7 @@
 #define		COUNTER_DOWN_MODE				2
 
 #define		TIMER_POLLING_MODE				0
-#define		TIMER_INTERRUPT_MODE				1
+#define		TIMER_INTERRUPT_MODE			1
 
 #define		TIMER_NO_CLOCK					0
 #define		TIMER_PRESCALER_NO				1
@@ -37,23 +37,20 @@
 #define		TIMER_PRESCALER_64				4
 #define		TIMER_PRESCALER_128				5
 #define		TIMER_PRESCALER_256				6
-#define		TIMER_PRESCALER_1024				7
+#define		TIMER_PRESCALER_1024			7
 
 
 /************************************************************************/
 /*			  Structures Definitions		        */
 /************************************************************************/
-
 typedef struct Timer_cfg_s
 {
 	uint8 Timer_CH_NO;
 	uint8 Timer_Mode;
 	uint8 Timer_Polling_Or_Interrupt;
 	uint8 Timer_Prescaler;
-
+	ERROR_STATUS (*Timer_Cbk_ptr)(void);
 }Timer_cfg_s;
-
-
 
 /************************************************************************/
 /*		         TIMER FUNCTIONS' PROTOTYPES		        */

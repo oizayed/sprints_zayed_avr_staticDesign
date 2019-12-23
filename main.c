@@ -5,9 +5,11 @@
  *      Author: Omar Zayed
  */
 
+void trials(void);
 
 int main(void)
 {
+	trials();
 	return 0;
 }
 

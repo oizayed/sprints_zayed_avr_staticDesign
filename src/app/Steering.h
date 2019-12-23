@@ -22,9 +22,10 @@
 /*				 DEFINES			        */
 /************************************************************************/
 
+/*Command Macros to call the steering api*/
 #define		CAR_STOP		0
 #define		CAR_FORWARD		1
-#define		CAR_BACKWARD		2
+#define		CAR_BACKWARD	2
 #define		CAR_RIGHT		3
 #define		CAR_LEFT		4
 
@@ -51,10 +52,10 @@ ERROR_STATUS Steering_Init(void);
  * Output:
  * In/Out:			
  * Return: The error status of the function.			
- * Description: This funtion controls the direction and the speed of the car.
+ * Description: This funtion controls the command and the speed of the car.
  * 							
  */
-ERROR_STATUS Steering_SteerCar(uint8 carDirection, uint8 speed);
+ERROR_STATUS Steering_SteerCar(uint8 Steering_CarCmd, uint8 speed);
 
 
 

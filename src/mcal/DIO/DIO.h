@@ -1,14 +1,15 @@
 /*
 *	File name: DIO.h
 *	Author : Tamoo7, Ahmed, Metwally
-*	version: 1.2
+*	version: 1.3
 * 	
 */
 
 #ifndef	DIO_H
 #define DIO_H
 
-#include "Common.h"
+#include "../../common/std_types.h"
+
 /************************************************************************/
 /*						PINS/BITS defines                               */
 /************************************************************************/
@@ -40,8 +41,8 @@
 #define GPIOC			2
 #define GPIOD			3
 
-#define HIGH			0xFF
-#define LOW				0x00
+#define OUTPUT			0xFF
+#define INPUT			0x00
 /************************************************************************/
 /*						Typedefs defines                               	*/
 /************************************************************************/
@@ -81,6 +82,8 @@ ERROR_STATUS DIO_init (DIO_Cfg_s *DIO_info);
 *					- LOWER_NIBBLE
 *					- FULL_PORT
 *		value 	-> The desired value 
+*					- HIGH
+*					- LOW
 *Output: No output
 *In/Out: No In/Out
 *Description: This function can set the value of a full port, a nibble 
@@ -106,6 +109,9 @@ ERROR_STATUS DIO_Write (uint8 GPIO, uint8 pins, uint8 value);
 *					- UPPER_NIBBLE
 *					- LOWER_NIBBLE
 *					- FULL_PORT
+*		value 	-> The desired value 
+*					- HIGH
+*					- LOW
 *Output: data -> the acquired data wether it was PORT data or pins data
 *In/Out: 
 *Description: This function gets the value of a full port, a nibble 
