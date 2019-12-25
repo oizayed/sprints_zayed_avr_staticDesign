@@ -13,12 +13,12 @@
 /*********************************/
 
 
-#include "../Static_Design_Project/Extra/std_types.h"
+#include "std_types.h"
 
-#define PWM_CH0  (0) 
-#define PWM_CH1A (1)
-#define PWM_CH1B (2)
-#define PWM_CH2  (3)     
+#define 	PWM_CH0  						(0)
+#define 	PWM_CH1A 						(1)
+#define 	PWM_CH1B 						(2)
+#define 	PWM_CH2  						(3)
 
 #define		PWM_PRESCALER_NO				(0)
 #define		PWM_PRESCALER_8					(1)
@@ -29,10 +29,11 @@
 #define		PWM_PRESCALER_1024				(6)
 
 typedef struct Pwm_Cfg_s_t 
-	{  
+{
 		uint8 Channel;
 		uint8 Prescaler;
-	}Pwm_Cfg_s_t; 
+
+}Pwm_Cfg_s_t;
 
 /*********************************/
 /*    FUNCTIONS DECLARATION      */

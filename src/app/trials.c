@@ -10,28 +10,25 @@
 #include "../mcal/Timer/Timer.h"
 #include "../common/interrupts.h"
 #include "ExternalInterrupt.h"
+#include "PWM.h"
 
 ERROR_STATUS Exti_Try(void);
 
 
 void trials(void)
 {
-	DIO_Cfg_s s1;
-	s1.GPIO = GPIOB;
-	s1.dir = OUTPUT;
-	s1.pins = 0b00010010;
-	DIO_init(&s1);
-	Timer_cfg_s t0;
-	t0.Timer_CH_NO = TIMER_CH2;
-	t0.Timer_Mode = TIMER_MODE;
-	t0.Timer_Polling_Or_Interrupt = TIMER_INTERRUPT_MODE;
-	t0.Timer_Prescaler = TIMER_PRESCALER_64;
-	ExternInt_Cfg_s Extern_Cfg = {EXTRN_INT_2, RISING_EDGE, Exti_Try};
-	ExternInt_Init(&Extern_Cfg);
-	ExternInt_Enable(EXTRN_INT_2);
-	//Timer_Init(&t0);
-	//Timer_Start(t0.Timer_CH_NO, 250);
-	sei();
+	DIO_Cfg_s DIO_Cfg = {GPIOB, 0xFF, OUTPUT};
+	DIO_init(&DIO_Cfg);
+	//Timer_cfg_s Timer_cfg = {TIMER_CH2, TIMER_MODE, TIMER_INTERRUPT_MODE, TIMER_PRESCALER_64};
+	//Timer_Init(&Timer_cfg);
+	//ExternInt_Cfg_s Extern_Cfg = {EXTRN_INT_2, RISING_EDGE, Exti_Try};
+	//ExternInt_Init(&Extern_Cfg);
+	//ExternInt_Enable(EXTRN_INT_2);
+	//Timer_Start(Timer_cfg.Timer_CH_NO, 250);
+	Pwm_Cfg_s_t Pwm_Cfg = {PWM_CH0, PWM_PRESCALER_NO};
+	Pwm_Init(&Pwm_Cfg);
+	Pwm_Start(PWM_CH0, 50, 5000);
+	//sei();
 
 
 	while(1)
@@ -45,11 +42,11 @@ void trials(void)
 
 ERROR_STATUS Exti_Try(void)
 {
-	DIO_Toggle(GPIOB, 0b00010010);
+	//DIO_Toggle(GPIOB, 0b00010010);
 	return E_OK;
 }
 
 ISR(TIMER2_COMP_vect)
 {
-	//DIO_Toggle(GPIOB, 0b00010110);
+	//DIO_Toggle(GPIOB, 0xFF);
 }

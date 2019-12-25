@@ -65,9 +65,9 @@
 #define		TIMER2_PRESCALER_256				0x06
 #define		TIMER2_PRESCALER_1024				0x07
 
-uint8 Timer0_Prescaler;
-uint16 Timer1_Prescaler;
-uint8 Timer2_Prescaler;
+static uint8 Timer0_Prescaler;
+static uint16 Timer1_Prescaler;
+static uint8 Timer2_Prescaler;
 
 
 

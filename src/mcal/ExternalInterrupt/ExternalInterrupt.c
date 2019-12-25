@@ -12,7 +12,7 @@
 #include "../../mcal/registers.h"
 #include "interrupts.h"
 
-static volatile ERROR_STATUS (*ExternalInterrupt_CBK_Ptr[3])(void) = {NULL, NULL, NULL};
+static ERROR_STATUS (*ExternalInterrupt_CBK_Ptr[3])(void) = {NULL, NULL, NULL};
 
 
 /*
@@ -149,45 +149,14 @@ ERROR_STATUS ExternInt_Init(ExternInt_Cfg_s* ExternIntCfg)
 			break;
 			}
 
-
-
-
 			if(errorStatus == E_OK)
 			{
-				switch(ExternIntCfg->ExternInt_No)
-				{
-
-				case EXTRN_INT_0 :
-					ExternalInterrupt_CBK_Ptr[0] = ExternIntCfg->ExternInt_CBF_Ptr;
-					DIO_Cfg.GPIO = GPIOD;
-					DIO_Cfg.pins = PIN2;
-					DIO_Cfg.dir = INPUT;
-					DIO_init(&DIO_Cfg);
-					break;
-
-
-				case EXTRN_INT_1 :
-					ExternalInterrupt_CBK_Ptr[1] = ExternIntCfg->ExternInt_CBF_Ptr;
-					DIO_Cfg.GPIO = GPIOD;
-					DIO_Cfg.pins = PIN3;
-					DIO_Cfg.dir = INPUT;
-					DIO_init(&DIO_Cfg);
-					break;
-
-				case EXTRN_INT_2 :
-					ExternalInterrupt_CBK_Ptr[2] = ExternIntCfg->ExternInt_CBF_Ptr;
-					DIO_Cfg.GPIO = GPIOB;
-					DIO_Cfg.pins = PIN2;
-					DIO_Cfg.dir = INPUT;
-					DIO_init(&DIO_Cfg);
-					break;
-
-				default :
-
-					errorStatus = E_NOK;
-					break;
+				ExternalInterrupt_CBK_Ptr[ExternIntCfg->ExternInt_No] = ExternIntCfg->ExternInt_CBF_Ptr;
 			}
-		}
+			else
+			{
+
+			}
 
 	}
 	else
